@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React, { useRef, useState } from 'react';
 
 interface SwipeCardProps {
@@ -19,6 +18,7 @@ const SwipeCard: React.FC<SwipeCardProps> = ({ leftImage, rightImage, onSwipe })
   const handleTouchMove = (e: React.TouchEvent) => {
     if (dragStartX !== null) {
       setDragDelta(e.touches[0].clientX - dragStartX);
+      e.preventDefault(); // Prevent browser scroll
     }
   };
 
@@ -46,11 +46,11 @@ const SwipeCard: React.FC<SwipeCardProps> = ({ leftImage, rightImage, onSwipe })
     >
       <div className="flex w-full h-64">
         <div className="w-1/2 h-full relative">
-          <Image src={leftImage} alt="Left" className="object-cover w-full h-full" />
+          <img src={leftImage} alt="Left" className="object-cover w-full h-full" />
           <div className="absolute inset-0 bg-gradient-to-r from-white/70 to-transparent pointer-events-none" />
         </div>
         <div className="w-1/2 h-full relative">
-          <Image src={rightImage} alt="Right" className="object-cover w-full h-full" />
+          <img src={rightImage} alt="Right" className="object-cover w-full h-full" />
           <div className="absolute inset-0 bg-gradient-to-l from-white/70 to-transparent pointer-events-none" />
         </div>
       </div>

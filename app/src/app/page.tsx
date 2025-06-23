@@ -4,12 +4,12 @@ import { useState } from "react";
 
 const images = [
   {
-    left: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
-    right: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80",
+    left: "/trump.jpg",
+    right: "/kamala.jpg",
   },
   {
-    left: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
-    right: "https://images.unsplash.com/photo-1519985176271-adb1088fa94c?auto=format&fit=crop&w=400&q=80",
+    left: "/lakers.png",
+    right: "/warriors.png",
   },
 ];
 
