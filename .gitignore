@@ -1,5 +1,12 @@
+.next
+.vercel
 artifacts
 cache
 node_modules
 typechain-types
+
+
+.env
+.DS_Store
 package-lock.json
+next-env.d.ts
