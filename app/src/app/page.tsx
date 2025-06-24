@@ -1,5 +1,6 @@
 "use client"
 import SwipeCard from "../components/SwipeCard";
+import WalletConnect from "../components/WalletConnect";
 import { useState } from "react";
 
 const images = [
@@ -28,6 +29,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <h1 className="text-2xl font-bold mt-8 mb-4">Swipe Left or Right</h1>
+      <WalletConnect />
       <SwipeCard
         leftImage={images[index].left}
         rightImage={images[index].right}

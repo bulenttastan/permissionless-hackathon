@@ -18,7 +18,6 @@ const SwipeCard: React.FC<SwipeCardProps> = ({ leftImage, rightImage, onSwipe })
   const handleTouchMove = (e: React.TouchEvent) => {
     if (dragStartX !== null) {
       setDragDelta(e.touches[0].clientX - dragStartX);
-      e.preventDefault(); // Prevent browser scroll
     }
   };
 
