@@ -27,8 +27,9 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-2xl font-bold mt-8 mb-4">Swipe Left or Right</h1>
+    <div className="flex flex-col items-center justify-center px-4 min-h-screen bg-gradient-to-br from-sky-300 via-blue-500 to-indigo-500">
+      <h1 className="text-6xl font-bold text-transparent absolute top-16 bg-gradient-to-r from-pink-500 to-orange-700 bg-clip-text">YesNo</h1>
+      <h1 className="text-2xl font-bold text-white drop-shadow">Bet $1</h1>
       <WalletConnect />
       <SwipeCard
         leftImage={images[index].left}
@@ -36,11 +37,11 @@ export default function Home() {
         onSwipe={handleSwipe}
       />
       {lastSwipe && (
-        <div className="mt-6 text-lg font-semibold text-blue-600 animate-pulse">
+        <div className=" text-lg font-semibold text-blue-100 animate-pulse drop-shadow">
           You swiped {lastSwipe}!
         </div>
       )}
-      <p className="mt-8 text-gray-500">Try swiping the card left or right.</p>
+      <p className="mt-20 text-blue-100">Try swiping the card left or right.</p>
     </div>
   );
 }

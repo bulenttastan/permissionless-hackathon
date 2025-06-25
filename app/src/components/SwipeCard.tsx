@@ -46,11 +46,11 @@ const SwipeCard: React.FC<SwipeCardProps> = ({ leftImage, rightImage, onSwipe })
       <div className="flex w-full h-64">
         <div className="w-1/2 h-full relative">
           <img src={leftImage} alt="Left" className="object-cover w-full h-full" />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/70 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-white/30 to-transparent pointer-events-none" />
         </div>
         <div className="w-1/2 h-full relative">
           <img src={rightImage} alt="Right" className="object-cover w-full h-full" />
-          <div className="absolute inset-0 bg-gradient-to-l from-white/70 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-tl from-white/30 to-transparent pointer-events-none" />
         </div>
       </div>
     </div>

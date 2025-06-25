@@ -31,19 +31,25 @@ async function main() {
   await market.waitForDeployment();
   console.log('Market is deployed to:', await market.getAddress());
 
+  // const usdc = await ethers.getContractAt('MockUSDC', '0xE7DF5A390887C2A2B57727B9D76f04530dC9DCaC');
+  // const yes = await ethers.getContractAt('YesToken', '0x0927ccdb781296Ce728e605c948ca9793A004fBF');
+  // const no = await ethers.getContractAt('NoToken', '0x5C077a391E5e0BdfFAd606c7B81f98f26A30117A');
+  // const oracle = await ethers.getContractAt('MockOracle', '0x74A5b0f38C9535C3D5f3Da4761a6364b9CEAC46A');
+  // const market = await ethers.getContractAt('CPMMWithERC20Shares', '0x97A2251262CCFDfb865B79332924F684A5bb0C3b');
+
   // Pre-mint 500 YES and 500 NO tokens and send to CPMM contract as initial liquidity
-  await yes.mint(market.target, parseEther('500'));
-  await no.mint(market.target, parseEther('500'));
+  await (await yes.mint(market.target, parseEther('500'))).wait();
+  await (await no.mint(market.target, parseEther('500'))).wait();
 
   // Mint USDC to the user and approve the CPMM contract
-  await usdc.mint(user1.address, parseEther('10000'));
-  await usdc.connect(user1).approve(market.target, parseEther('10000'));
-  await usdc.mint(user2.address, parseEther('10000'));
-  await usdc.connect(user2).approve(market.target, parseEther('10000'));
+  await (await usdc.mint(user1.address, parseEther('10000'))).wait();
+  await (await usdc.connect(user1).approve(market.target, parseEther('10000'))).wait();
+  await (await usdc.mint(user2.address, parseEther('10000'))).wait();
+  await (await usdc.connect(user2).approve(market.target, parseEther('10000'))).wait();
 
   // Set up for user to purchase 100 tokens twice
-  await market.connect(user2).buyYes(parseEther('100'));
-  await market.connect(user2).buyYes(parseEther('100'));
+  await (await market.connect(user2).buyYes(parseEther('100'))).wait();
+  await (await market.connect(user2).buyYes(parseEther('100'))).wait();
 
   // Show probability on UI
   const yesProb = await market.getYesProbability();
@@ -56,8 +62,8 @@ async function main() {
   const reserveBefore = await market.yesReserve();
   const reserveValue = await market.yesReserveValue();
   const estimateShares = await market.getDollarToShares(moneySpend, reserveValue, reserveBefore);
-  await usdc.connect(user1).approve(market.target, moneySpend);
-  await market.connect(user1).buyYes(estimateShares);
+  await (await usdc.connect(user1).approve(market.target, moneySpend)).wait();
+  await (await market.connect(user1).buyYes(estimateShares)).wait(2);
 
   // Validation
   const yesReserveAfter = await market.yesReserve();
@@ -78,3 +84,4 @@ main()
     console.error(err);
     process.exit(1);
   });
+
